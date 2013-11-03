@@ -2,25 +2,25 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    sass: {
+    compass: {
       dist: {
-        files: {
-          'style/style.css' : 'sass/style.scss'
+        options: {
+        config: 'config.rb'
         }
       },
     },
     watch: {
       css: {
         files: '**/*.scss',
-        tasks: ['sass']
+        tasks: ['compass']
       },
       livereload: {
       options: { livereload: true },
-      files: ['style/*','*'],
+      files: ['css/*','*'],
       }
     }
   });
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.registerTask('default',['watch']);
 }
